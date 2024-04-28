@@ -3,7 +3,7 @@ import ProductManager from './data/files/ProductManager.js';
 
 const app = express();
 const port = 8080;
-
+//Indicamos que deseamos que public se vuelva estactico. En la ruta raiz se mostrara el index.html
 // Iniciar el servidor
 app.listen(port, () => {
     console.log(`Servidor Express corriendo en http://localhost:${port}`);
