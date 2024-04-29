@@ -1,18 +1,21 @@
+// app.js
+
 import express from 'express';
-import ProductManager from './data/files/ProductManager.js';
+import ProductManager from '../src/data/files/ProductManager.js';
+import productRoutes from './routes/productRoutes.js';
+import cartRoutes from './routes/cartRoutes.js';
 
 const app = express();
-const port = 8080;
-//Indicamos que deseamos que public se vuelva estactico. En la ruta raiz se mostrara el index.html
-// Iniciar el servidor
-app.listen(port, () => {
-    console.log(`Servidor Express corriendo en http://localhost:${port}`);
-});
-app.get('/', (req, res) => {
-    res.send('Bienvenido al servidor Express');
-});
-// Configurar el manejo de solicitudes JSON
+const PORT = 8080;
+
 app.use(express.json());
+
+app.use('/api/products', productRoutes);
+app.use('/api/carts', cartRoutes);
+
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
 
 // Crear una instancia de ProductManager
 const productManager = new ProductManager('products.json');
