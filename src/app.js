@@ -14,13 +14,17 @@ const PORT = 8080;
 const httpServer = http.createServer(app);
 const socketServer = new Server(httpServer);
 
-app.engine('handlebars', handlebars.engine());
+app.engine('handlebars', handlebars.engine({ defaultLayout: false }));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'handlebars');
 
 app.use(express.static(__dirname + '/public'));
 
 app.use('/', viewsRouter);
+app.get('/home', (req, res) => {
+    res.render('home');
+});
+
 
 const productManager = new ProductManager('products.json');
 

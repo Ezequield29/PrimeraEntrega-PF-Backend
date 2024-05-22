@@ -1,12 +1,14 @@
-import express from 'express';
-const router = express.Router();
+import { Router } from 'express';
+import __dirname from '../utils.js';
+
+const router = Router();
 
 router.get('/', (req, res) => {
-    res.render('home', {}); 
+    res.render('index');
 });
 
 router.get('/realtimeproducts', (req, res) => {
-    res.render('realTimeProducts', {});
+    res.render('realTimeProducts');
 });
 
 export default router;
